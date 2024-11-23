@@ -7,9 +7,7 @@ import java.time.ZoneId
 class Person {
 
     var id: String? = null
-    lateinit var firstName: String
-    lateinit var middleName: String
-    lateinit var lastName: String
+    lateinit var fullName: PersonFullName
     lateinit var ssn: String
     lateinit var birthDate: String
     lateinit var email: String
@@ -20,9 +18,7 @@ class Person {
     companion object {
         fun create(registrationDto: PersonRegistrationDto): Person {
             val person = Person()
-            person.firstName = registrationDto.firstName
-            person.middleName = registrationDto.middleName
-            person.lastName = registrationDto.lastName
+            person.fullName = PersonFullName.create(registrationDto.fullNameDto)
             person.ssn = registrationDto.ssn
             person.birthDate = registrationDto.birthDate.toString()
             person.email = registrationDto.email
