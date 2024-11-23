@@ -9,7 +9,7 @@ class Customer {
 
     var id: String = ""
     lateinit var person: Person
-    lateinit var address: CustomerAddress
+    lateinit var address: CustomerAddressDto
     val createdAt: String = LocalDateTime.now().toString()
     val createdAtZone: String = ZoneId.systemDefault().toString()
 
@@ -17,7 +17,7 @@ class Customer {
         fun create(person: Person, addressDto: CustomerAddressDto): Customer {
             val customer = Customer()
             customer.person = person
-            customer.address = CustomerAddress.create(addressDto)
+            customer.address = addressDto
             return customer
         }
     }
