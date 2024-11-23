@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service
 @Service
 class PersonRegistrationServiceImpl: PersonRegistrationService {
 
-    override suspend fun register(registrationDto: PersonRegistrationDto) {
+    override suspend fun register(registrationDto: PersonRegistrationDto): Person {
         return withContext(Dispatchers.IO) {
             val isSsnDuplicated = !FirestoreCollections
                 .getPeopleCollectionReference()
@@ -35,7 +35,7 @@ class PersonRegistrationServiceImpl: PersonRegistrationService {
                 .add(person)
             val personID = savedPerson.get().id
             savedPerson.get().update("id", personID)
-            savedPerson.get().get().get().toObject(Person::class.java)
+            savedPerson.get().get().get().toObject(Person::class.java)!!
         }
     }
 
