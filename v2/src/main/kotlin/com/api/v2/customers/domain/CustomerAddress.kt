@@ -4,10 +4,10 @@ import com.api.v2.customers.dtos.CustomerAddressDto
 
 class CustomerAddress {
 
-    lateinit var state: String
-    lateinit var city: String
-    lateinit var street: String
-    lateinit var zipcode: String
+    var state: String = ""
+    var city: String = ""
+    var street: String = ""
+    var zipcode: String = ""
 
     companion object {
         fun create(customerAddressDto: CustomerAddressDto): CustomerAddress {

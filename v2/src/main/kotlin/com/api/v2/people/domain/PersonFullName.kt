@@ -4,9 +4,9 @@ import com.api.v2.people.dtos.PersonFullNameDto
 
 class PersonFullName {
 
-    lateinit var firstName: String
-    lateinit var middleName: String
-    lateinit var lastName: String
+    var firstName: String = ""
+    var middleName: String = ""
+    var lastName: String = ""
 
     companion object {
         fun create(dto: PersonFullNameDto): PersonFullName {

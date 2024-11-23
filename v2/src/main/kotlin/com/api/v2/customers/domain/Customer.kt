@@ -7,7 +7,7 @@ import java.time.ZoneId
 
 class Customer {
 
-    var id: String? = null
+    var id: String = ""
     lateinit var person: Person
     lateinit var address: CustomerAddress
     val createdAt: String = LocalDateTime.now().toString()

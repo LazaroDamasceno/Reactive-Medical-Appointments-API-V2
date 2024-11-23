@@ -6,12 +6,12 @@ import java.time.ZoneId
 
 class Person {
 
-    var id: String? = null
+    var id: String = ""
     lateinit var fullName: PersonFullName
-    lateinit var ssn: String
-    lateinit var birthDate: String
-    lateinit var email: String
-    lateinit var phoneNumber: String
+    var ssn: String = ""
+    var birthDate: String = ""
+    var email: String = ""
+    var phoneNumber: String = ""
     val createdAt: String = LocalDateTime.now().toString()
     val createdAtZone: String = ZoneId.systemDefault().toString()
 
