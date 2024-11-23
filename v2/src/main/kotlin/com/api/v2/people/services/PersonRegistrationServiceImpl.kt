@@ -4,6 +4,7 @@ import com.api.v2.people.domain.Person
 import com.api.v2.people.domain.PersonRepository
 import com.api.v2.people.dtos.PersonRegistrationDto
 import com.api.v2.people.exceptions.DuplicatedPersonalInformationException
+import jakarta.validation.Valid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.singleOrNull
@@ -15,7 +16,7 @@ internal class PersonRegistrationServiceImpl(
     private val personRepository: PersonRepository
 ): PersonRegistrationService {
 
-    override suspend fun register(registrationDto: PersonRegistrationDto): Person {
+    override suspend fun register(registrationDto: @Valid PersonRegistrationDto): Person {
 
         suspend fun handleDuplicatedSsn(ssn: String) {
             val isSsnDuplicated = personRepository
