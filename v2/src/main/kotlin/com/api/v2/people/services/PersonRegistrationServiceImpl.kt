@@ -11,7 +11,7 @@ import kotlinx.coroutines.withContext
 import org.springframework.stereotype.Service
 
 @Service
-class PersonRegistrationServiceImpl(
+internal class PersonRegistrationServiceImpl(
     private val personRepository: PersonRepository
 ): PersonRegistrationService {
 
