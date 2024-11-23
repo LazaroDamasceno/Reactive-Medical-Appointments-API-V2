@@ -12,7 +12,7 @@ class FirestoreCollections {
         }
 
         fun getCustomersCollectionReference(): CollectionReference {
-            return FirestoreClient.getFirestore().collection("people")
+            return FirestoreClient.getFirestore().collection("customers")
         }
 
     }

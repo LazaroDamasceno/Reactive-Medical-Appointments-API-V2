@@ -13,7 +13,7 @@ class CustomerRegistrationServiceImpl(
     private val personRegistrationService: PersonRegistrationService
 ): CustomerRegistrationService {
 
-    override suspend fun register(registrationDto: CustomerRegistrationDto) {
+    override suspend fun register(registrationDto: CustomerRegistrationDto): Customer {
         return withContext(Dispatchers.IO) {
             val savedPerson = personRegistrationService.register(registrationDto.personRegistrationDto)
             val customer = Customer.create(savedPerson, registrationDto.customerAddressDto)
@@ -22,7 +22,7 @@ class CustomerRegistrationServiceImpl(
                 .add(customer)
             val customerId = savedCustomer.get().id
             savedCustomer.get().update("id", customerId)
-            savedCustomer.get().get().get().toObject(Customer::class.java)
+            savedCustomer.get().get().get().toObject(Customer::class.java)!!
         }
     }
 

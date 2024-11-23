@@ -13,9 +13,9 @@ class CustomerAddress {
         fun create(customerAddressDto: CustomerAddressDto): CustomerAddress {
             val customerAddress = CustomerAddress()
             customerAddress.state = customerAddressDto.state
-            customerAddress.city = customerAddress.city
+            customerAddress.city = customerAddressDto.city
             customerAddress.street = customerAddressDto.street
-            customerAddress.zipcode = customerAddress.zipcode
+            customerAddress.zipcode = customerAddressDto.zipcode
             return customerAddress
         }
 
