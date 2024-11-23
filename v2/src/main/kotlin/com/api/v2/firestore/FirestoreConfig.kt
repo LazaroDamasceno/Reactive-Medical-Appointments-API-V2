@@ -12,7 +12,7 @@ class FirestoreConfig {
 
     @PostConstruct
     fun config() {
-        val path = "src/main/resources/private_key"
+        val path = "src/main/resources/private_key/serviceAccountKey.json"
         val serviceAccount = FileInputStream(path)
         val options = FirebaseOptions.Builder()
             .setCredentials(GoogleCredentials.fromStream(serviceAccount))

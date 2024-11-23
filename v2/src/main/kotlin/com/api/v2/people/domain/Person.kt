@@ -24,7 +24,7 @@ class Person {
             person.middleName = registrationDto.middleName
             person.lastName = registrationDto.lastName
             person.ssn = registrationDto.ssn
-            person.birthDate = registrationDto.birthDate
+            person.birthDate = registrationDto.birthDate.toString()
             person.email = registrationDto.email
             person.phoneNumber = registrationDto.phoneNumber
             return person
