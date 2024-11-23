@@ -1,5 +1,6 @@
 package com.api.v2.customers.domain
 
+import com.api.v2.customers.dtos.CustomerAddressDto
 import com.api.v2.people.domain.Person
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -13,10 +14,10 @@ class Customer {
     val createdAtZone: String = ZoneId.systemDefault().toString()
 
     companion object {
-        fun create(person: Person, address: CustomerAddress): Customer {
+        fun create(person: Person, addressDto: CustomerAddressDto): Customer {
             val customer = Customer()
             customer.person = person
-            customer.address = address
+            customer.address = CustomerAddress.create(addressDto)
             return customer
         }
     }

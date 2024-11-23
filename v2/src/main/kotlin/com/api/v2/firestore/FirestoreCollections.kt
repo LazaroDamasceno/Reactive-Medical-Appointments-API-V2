@@ -11,6 +11,10 @@ class FirestoreCollections {
             return FirestoreClient.getFirestore().collection("people")
         }
 
+        fun getCustomersCollectionReference(): CollectionReference {
+            return FirestoreClient.getFirestore().collection("people")
+        }
+
     }
 
 }
