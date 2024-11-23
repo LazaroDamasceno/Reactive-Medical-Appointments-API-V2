@@ -1,23 +1,19 @@
 package com.api.v2
 
-import com.api.v2.people.domain.Person
 import com.api.v2.people.dtos.PersonFullNameDto
 import com.api.v2.people.dtos.PersonRegistrationDto
-import com.api.v2.people.exceptions.DuplicatedPersonalInformationException
-import com.api.v2.people.services.PersonRegistrationService
-import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.web.reactive.server.WebTestClient
 import java.time.LocalDate
-import kotlin.test.assertEquals
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class PersonRegistrationTest {
+class CustomerRegistrationTest {
 
     @Autowired
-    private lateinit var registrationService: PersonRegistrationService
+    private lateinit var webTestClient: WebTestClient
 
     val registrationDto1 = PersonRegistrationDto(
         PersonFullNameDto(
@@ -33,18 +29,24 @@ class PersonRegistrationTest {
 
     @Test
     @Order(1)
-    fun `test successful registration`(): Unit = runBlocking {
-        val actual = registrationService.register(registrationDto1)::class
-        val excepted = Person::class
-        assertEquals(excepted, actual)
+    fun `test successful registration`() {
+        webTestClient
+            .post()
+            .uri("api/v2/customers")
+            .bodyValue(registrationDto1)
+            .exchange()
+            .expectStatus().is2xxSuccessful()
     }
 
     @Test
     @Order(2)
-    fun `test unsuccessful for duplicated SSN`(): Unit = runBlocking {
-        assertThrows<DuplicatedPersonalInformationException> {
-            registrationService.register(registrationDto1)
-        }
+    fun `test unsuccessful for duplicated SSN`() {
+        webTestClient
+            .post()
+            .uri("api/v2/customers")
+            .bodyValue(registrationDto1)
+            .exchange()
+            .expectStatus().is5xxServerError()
     }
 
     val registrationDto2 = PersonRegistrationDto(
@@ -61,10 +63,13 @@ class PersonRegistrationTest {
 
     @Test
     @Order(3)
-    fun `test unsuccessful for duplicated email`(): Unit = runBlocking {
-        assertThrows<DuplicatedPersonalInformationException> {
-            registrationService.register(registrationDto2)
-        }
+    fun `test unsuccessful for duplicated email`() {
+        webTestClient
+            .post()
+            .uri("api/v2/customers")
+            .bodyValue(registrationDto2)
+            .exchange()
+            .expectStatus().is5xxServerError()
     }
 
 }

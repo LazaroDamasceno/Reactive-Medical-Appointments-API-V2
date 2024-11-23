@@ -12,5 +12,5 @@ data class PersonRegistrationDto(
     val ssn: String,
     val birthDate: @NotNull LocalDate,
     val email: @Email @NotBlank String,
-    val phoneNumber: @NotBlank @Size(min = 10, max = 10) String
+    val phoneNumber: @NotBlank @Size(min=10, max=10) String
 )
