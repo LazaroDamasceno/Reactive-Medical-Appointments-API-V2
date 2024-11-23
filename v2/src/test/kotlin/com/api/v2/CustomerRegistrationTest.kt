@@ -1,5 +1,7 @@
 package com.api.v2
 
+import com.api.v2.customers.dtos.CustomerAddressDto
+import com.api.v2.customers.dtos.CustomerRegistrationDto
 import com.api.v2.people.dtos.PersonFullNameDto
 import com.api.v2.people.dtos.PersonRegistrationDto
 import org.junit.jupiter.api.*
@@ -15,16 +17,24 @@ class CustomerRegistrationTest {
     @Autowired
     private lateinit var webTestClient: WebTestClient
 
-    val registrationDto1 = PersonRegistrationDto(
-        PersonFullNameDto(
-            "Leo",
-            "",
-            "Santos"
+    val customerRegistrationDto1 = CustomerRegistrationDto(
+        PersonRegistrationDto(
+            PersonFullNameDto(
+                "Leo",
+                "",
+                "Santos"
+            ),
+            "123456789",
+            LocalDate.parse("2000-12-12"),
+            "leosantos@mail.com",
+            "1234567890"
         ),
-        "123456789",
-        LocalDate.parse("2000-12-12"),
-        "leosantos@mail.com",
-        "1234567890"
+        CustomerAddressDto(
+            "CA",
+            "LA",
+            "Downtown",
+            "90012"
+        )
     )
 
     @Test
@@ -33,7 +43,7 @@ class CustomerRegistrationTest {
         webTestClient
             .post()
             .uri("api/v2/customers")
-            .bodyValue(registrationDto1)
+            .bodyValue(customerRegistrationDto1)
             .exchange()
             .expectStatus().is2xxSuccessful()
     }
@@ -44,22 +54,31 @@ class CustomerRegistrationTest {
         webTestClient
             .post()
             .uri("api/v2/customers")
-            .bodyValue(registrationDto1)
+            .bodyValue(customerRegistrationDto1)
             .exchange()
             .expectStatus().is5xxServerError()
     }
 
-    val registrationDto2 = PersonRegistrationDto(
-        PersonFullNameDto(
-            "Leo",
-            "",
-            "Santos"
+    val customerRegistrationDto2 = CustomerRegistrationDto(
+        PersonRegistrationDto(
+            PersonFullNameDto(
+                "Leo",
+                "",
+                "Santos"
+            ),
+            "123456788",
+            LocalDate.parse("2000-12-12"),
+            "leosantos@mail.com",
+            "1234567890"
         ),
-        "123456788",
-        LocalDate.parse("2000-12-12"),
-        "leosantos@mail.com",
-        "1234567890"
+        CustomerAddressDto(
+            "CA",
+            "LA",
+            "Downtown",
+            "90012"
+        )
     )
+
 
     @Test
     @Order(3)
@@ -67,7 +86,7 @@ class CustomerRegistrationTest {
         webTestClient
             .post()
             .uri("api/v2/customers")
-            .bodyValue(registrationDto2)
+            .bodyValue(customerRegistrationDto2)
             .exchange()
             .expectStatus().is5xxServerError()
     }
