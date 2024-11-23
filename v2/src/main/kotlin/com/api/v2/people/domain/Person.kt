@@ -19,7 +19,7 @@ class Person(
 ) {
 
     @BsonId
-    val id: ObjectId = ObjectId()
+    var id: ObjectId = ObjectId()
     val createdAt: LocalDateTime = LocalDateTime.now()
     val createdAtZone: ZoneId = ZoneId.systemDefault()
 

@@ -15,7 +15,7 @@ class Customer(
 ) {
 
     @BsonId
-    val id: ObjectId = ObjectId()
+    var id: ObjectId = ObjectId()
     val createdAt: String = LocalDateTime.now().toString()
     val createdAtZone: String = ZoneId.systemDefault().toString()
 
