@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 import org.springframework.stereotype.Service
 
 @Service
-class CustomerRegistrationServiceImpl(
+internal class CustomerRegistrationServiceImpl(
     private val personRegistrationService: PersonRegistrationService,
     private val customerRepository: CustomerRepository
 ): CustomerRegistrationService {
