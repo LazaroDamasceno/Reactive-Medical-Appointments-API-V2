@@ -42,7 +42,6 @@ class PersonModificationTest {
         val actual = personModificationService.modify(foundPerson!!, modificationDto)::class
         val expected = Person::class
         assertEquals(expected, actual)
-        personRepository.deleteAll()
     }
 
 }

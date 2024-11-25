@@ -23,6 +23,8 @@ class Person(
     var id: ObjectId = ObjectId()
     val createdAt: LocalDateTime = LocalDateTime.now()
     val createdAtZone: ZoneId = ZoneId.systemDefault()
+    lateinit var modifiedAt: LocalDateTime
+    lateinit var modifiedAtZone: ZoneId
 
     companion object {
         fun create(registrationDto: PersonRegistrationDto): Person {
@@ -41,6 +43,8 @@ class Person(
         birthDate = modificationDto.birthDate
         email = modificationDto.email
         phoneNumber = modificationDto.phoneNumber
+        modifiedAt = LocalDateTime.now()
+        modifiedAtZone = ZoneId.systemDefault()
     }
 
 }
