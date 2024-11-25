@@ -21,7 +21,7 @@ class CustomerFinderUtil(
             println(foundPerson)
             customerRepository
                 .findAll()
-                .filter { c -> c.person == foundPerson }
+                .filter { c -> c.person.id == foundPerson.id }
                 .single()
         }
     }

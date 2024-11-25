@@ -38,7 +38,7 @@ class PersonModificationTest {
 
     @Test
     fun `test successful modification`(): Unit = runBlocking {
-        val foundPerson = personFinderUtil.find("123456789")
+        val foundPerson = personFinderUtil.findBySsn("123456789")
         val actual = personModificationService.modify(foundPerson, modificationDto)::class
         val expected = Person::class
         assertEquals(expected, actual)
