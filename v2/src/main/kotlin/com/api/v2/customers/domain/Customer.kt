@@ -1,6 +1,7 @@
 package com.api.v2.customers.domain
 
 import com.api.v2.customers.dtos.CustomerAddressDto
+import com.api.v2.customers.dtos.CustomerModificationDto
 import com.api.v2.people.domain.Person
 import org.bson.codecs.pojo.annotations.BsonId
 import org.bson.types.ObjectId
@@ -23,6 +24,11 @@ class Customer(
         fun create(person: Person, addressDto: CustomerAddressDto): Customer {
             return Customer(person, addressDto)
         }
+    }
+
+    fun modify(person: Person, address: CustomerAddressDto) {
+        this.person = person
+        this.address = address
     }
 
 }
