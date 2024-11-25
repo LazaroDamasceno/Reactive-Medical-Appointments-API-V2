@@ -10,7 +10,7 @@ import kotlinx.coroutines.withContext
 import org.springframework.stereotype.Service
 
 @Service
-class CustomerModificationServiceImpl(
+internal class CustomerModificationServiceImpl(
     private val customerFinderUtil: CustomerFinderUtil,
     private val personModificationService: PersonModificationService,
     private val customerRepository: CustomerRepository
