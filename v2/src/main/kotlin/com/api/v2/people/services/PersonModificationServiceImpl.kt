@@ -7,7 +7,9 @@ import jakarta.validation.Valid
 import jakarta.validation.constraints.NotNull
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.springframework.stereotype.Service
 
+@Service
 internal class PersonModificationServiceImpl(
     private val personRepository: PersonRepository
 ): PersonModificationService {

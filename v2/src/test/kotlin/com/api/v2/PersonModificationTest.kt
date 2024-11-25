@@ -1,6 +1,7 @@
 package com.api.v2
 
 import com.api.v2.people.domain.Person
+import com.api.v2.people.domain.PersonRepository
 import com.api.v2.people.dtos.PersonFullNameDto
 import com.api.v2.people.dtos.PersonModificationDto
 import com.api.v2.people.services.PersonModificationService
@@ -17,6 +18,9 @@ class PersonModificationTest {
 
     @Autowired
     private lateinit var personFinderUtil: PersonFinderUtil
+
+    @Autowired
+    private lateinit var personRepository: PersonRepository
 
     @Autowired
     private lateinit var personModificationService: PersonModificationService
@@ -38,6 +42,7 @@ class PersonModificationTest {
         val actual = personModificationService.modify(foundPerson!!, modificationDto)::class
         val expected = Person::class
         assertEquals(expected, actual)
+        personRepository.deleteAll()
     }
 
 }
