@@ -23,8 +23,8 @@ class Person(
     var id: ObjectId = ObjectId()
     val createdAt: LocalDateTime = LocalDateTime.now()
     val createdAtZone: ZoneId = ZoneId.systemDefault()
-    lateinit var modifiedAt: LocalDateTime
-    lateinit var modifiedAtZone: ZoneId
+    var modifiedAt: LocalDateTime? = null
+    var modifiedAtZone: ZoneId? = null
 
     companion object {
         fun create(registrationDto: PersonRegistrationDto): Person {

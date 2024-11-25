@@ -56,7 +56,7 @@ class CustomerModificationTest {
     fun `test unsuccessful for not found customer`() {
         val ssn = "123456788"
         webTestClient
-            .post()
+            .put()
             .uri("api/v2/customers/$ssn")
             .bodyValue(customerModificationDto)
             .exchange()

@@ -1,7 +1,6 @@
 package com.api.v2.customers.domain
 
 import com.api.v2.customers.dtos.CustomerAddressDto
-import com.api.v2.customers.dtos.CustomerModificationDto
 import com.api.v2.people.domain.Person
 import org.bson.codecs.pojo.annotations.BsonId
 import org.bson.types.ObjectId
