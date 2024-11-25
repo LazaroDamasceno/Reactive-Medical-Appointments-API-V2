@@ -3,6 +3,7 @@ package com.api.v2.customers.controllers
 import com.api.v2.customers.domain.Customer
 import com.api.v2.customers.dtos.CustomerModificationDto
 import com.api.v2.customers.dtos.CustomerRegistrationDto
+import com.api.v2.customers.dtos.CustomerResponseDto
 import com.api.v2.customers.services.CustomerModificationService
 import com.api.v2.customers.services.CustomerRegistrationService
 import com.api.v2.customers.services.CustomerRetrievalService
@@ -21,7 +22,7 @@ class CustomerController(
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    suspend fun register(@RequestBody registrationDto: @Valid CustomerRegistrationDto): Customer {
+    suspend fun register(@RequestBody registrationDto: @Valid CustomerRegistrationDto): CustomerResponseDto {
         return registrationService.register(registrationDto)
     }
 
@@ -36,13 +37,13 @@ class CustomerController(
 
     @GetMapping("{ssn}")
     @ResponseStatus(value = HttpStatus.OK)
-    suspend fun findBySsn(@PathVariable ssn: String): Customer {
+    suspend fun findBySsn(@PathVariable ssn: String): CustomerResponseDto {
         return retrievalService.findBySsn(ssn)
     }
 
     @GetMapping
     @ResponseStatus(value = HttpStatus.OK)
-    suspend fun findAll(): Flow<Customer> {
+    suspend fun findAll(): Flow<CustomerResponseDto> {
         return retrievalService.findAll()
     }
 
