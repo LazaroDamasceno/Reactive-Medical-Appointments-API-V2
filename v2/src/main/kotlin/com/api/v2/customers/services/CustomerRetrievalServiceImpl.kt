@@ -16,7 +16,7 @@ internal class CustomerRetrievalServiceImpl(
 
     override suspend fun findBySsn(ssn: String): Customer {
         return withContext(Dispatchers.IO) {
-            customerFinderUtil.find(ssn)
+            customerFinderUtil.findBySsn(ssn)
         }
     }
 

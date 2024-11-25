@@ -18,7 +18,7 @@ internal class CustomerModificationServiceImpl(
 
     override suspend fun modify(ssn: String, customerModificationDto: @Valid CustomerModificationDto) {
         return withContext(Dispatchers.IO) {
-            val foundCustomer = customerFinderUtil.find(ssn)
+            val foundCustomer = customerFinderUtil.findBySsn(ssn)
             val foundPerson = foundCustomer.person
             val modifiedPerson = personModificationService
                 .modify(foundPerson, customerModificationDto.personModificationDto)

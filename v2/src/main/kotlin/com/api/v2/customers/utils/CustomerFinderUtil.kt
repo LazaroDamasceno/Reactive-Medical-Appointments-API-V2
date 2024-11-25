@@ -15,9 +15,10 @@ class CustomerFinderUtil(
     private val customerRepository: CustomerRepository
 ) {
 
-    suspend fun find(ssn: String): Customer {
+    suspend fun findBySsn(ssn: String): Customer {
         return withContext(Dispatchers.IO) {
             val foundPerson = personFinderUtil.find(ssn)
+            println(foundPerson)
             customerRepository
                 .findAll()
                 .filter { c -> c.person == foundPerson }
