@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component
 
 @Component
 class PersonFinderUtil(
-    private val repository: PersonRepository
+    private val personRepository: PersonRepository
 ) {
 
     suspend fun find(ssn: String): Person? {
         return withContext(Dispatchers.IO) {
-            repository
+            personRepository
                 .findAll()
                 .filter { p -> p.ssn == ssn }
                 .singleOrNull()
