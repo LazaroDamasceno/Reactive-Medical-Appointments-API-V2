@@ -1,6 +1,7 @@
 package com.api.v2.people.domain
 
 import com.api.v2.people.dtos.PersonFullNameDto
+import com.api.v2.people.dtos.PersonModificationDto
 import com.api.v2.people.dtos.PersonRegistrationDto
 import org.bson.codecs.pojo.annotations.BsonId
 import org.bson.types.ObjectId
@@ -33,6 +34,13 @@ class Person(
                 registrationDto.phoneNumber
             )
         }
+    }
+
+    fun modify(modificationDto: PersonModificationDto) {
+        fullName = modificationDto.fullNameDto
+        birthDate = modificationDto.birthDate
+        email = modificationDto.email
+        phoneNumber = modificationDto.phoneNumber
     }
 
 }
