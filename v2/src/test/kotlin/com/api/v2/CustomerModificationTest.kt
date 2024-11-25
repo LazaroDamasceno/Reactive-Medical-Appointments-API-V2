@@ -23,12 +23,12 @@ class CustomerModificationTest {
     val customerModificationDto = CustomerModificationDto(
         PersonModificationDto(
             PersonFullNameDto(
-                "Leo",
-                "",
-                "Santos"
+                "Leonardo",
+                "Silva",
+                "Santos Jr"
             ),
             LocalDate.parse("2000-12-12"),
-            "leosantos@mail.com",
+            "jr@leosantos.com",
             "1234567890"
         ),
         CustomerAddressDto(
