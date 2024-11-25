@@ -17,7 +17,7 @@ class CustomerFinderUtil(
 
     suspend fun findBySsn(ssn: String): Customer {
         return withContext(Dispatchers.IO) {
-            val foundPerson = personFinderUtil.find(ssn)
+            val foundPerson = personFinderUtil.findBySsn(ssn)
             println(foundPerson)
             customerRepository
                 .findAll()

@@ -15,7 +15,7 @@ class PersonFinderUtil(
     private val personRepository: PersonRepository
 ) {
 
-    suspend fun find(ssn: String): Person {
+    suspend fun findBySsn(ssn: String): Person {
         return withContext(Dispatchers.IO) {
             val foundPerson = personRepository
                 .findAll()
