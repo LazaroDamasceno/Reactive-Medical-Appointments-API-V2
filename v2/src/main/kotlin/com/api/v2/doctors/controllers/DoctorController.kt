@@ -4,13 +4,10 @@ import com.api.v2.doctors.dtos.DoctorRegistrationDto
 import com.api.v2.doctors.dtos.DoctorResponseDto
 import com.api.v2.doctors.services.DoctorRegistrationService
 import jakarta.validation.Valid
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("api/v1/doctors")
+@RequestMapping("api/v2/doctors")
 class DoctorController(
     private val registrationService: DoctorRegistrationService
 ) {
