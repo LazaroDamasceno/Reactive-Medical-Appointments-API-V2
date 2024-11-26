@@ -1,6 +1,5 @@
 package com.api.v2.doctors.domain
 
-import com.api.v2.doctors.dtos.MedicalLicenseNumberDto
 import com.api.v2.people.domain.Person
 import org.bson.codecs.pojo.annotations.BsonId
 import org.bson.types.ObjectId
@@ -10,7 +9,7 @@ import java.time.ZoneId
 
 @Document
 class Doctor(
-    var medicalLicenseNumberDto: MedicalLicenseNumberDto,
+    var medicalLicenseNumber: String,
     var person: Person
 ) {
 
@@ -20,8 +19,8 @@ class Doctor(
     val createdAtZone: ZoneId = ZoneId.systemDefault()
 
     companion object {
-        fun create( medicalLicenseNumberDto: MedicalLicenseNumberDto, person: Person): Doctor {
-            return Doctor(medicalLicenseNumberDto, person)
+        fun create( medicalLicenseNumber: String, person: Person): Doctor {
+            return Doctor(medicalLicenseNumber, person)
         }
     }
 

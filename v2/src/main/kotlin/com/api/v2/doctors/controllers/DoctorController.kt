@@ -2,7 +2,6 @@ package com.api.v2.doctors.controllers
 
 import com.api.v2.doctors.dtos.DoctorRegistrationDto
 import com.api.v2.doctors.dtos.DoctorResponseDto
-import com.api.v2.doctors.dtos.MedicalLicenseNumberDto
 import com.api.v2.doctors.services.DoctorRegistrationService
 import com.api.v2.doctors.services.DoctorRetrievalService
 import jakarta.validation.Valid
@@ -23,12 +22,10 @@ class DoctorController(
         return registrationService.register(registrationDto)
     }
 
-    @GetMapping("by-medical-license-number")
+    @GetMapping("{licenseNumber}")
     @ResponseStatus(value = HttpStatus.OK)
-    suspend fun findByMedicalLicenseNumber(
-        @RequestBody licenseNumberDto: @Valid MedicalLicenseNumberDto
-    ): DoctorResponseDto {
-        return retrievalService.findByMedicalLicenseNumber(licenseNumberDto)
+    suspend fun findByMedicalLicenseNumber(@PathVariable licenseNumber: String): DoctorResponseDto {
+        return retrievalService.findByMedicalLicenseNumber(licenseNumber)
     }
 
     @GetMapping

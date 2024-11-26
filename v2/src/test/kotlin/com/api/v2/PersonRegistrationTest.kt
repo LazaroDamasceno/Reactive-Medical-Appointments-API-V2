@@ -1,7 +1,6 @@
 package com.api.v2
 
 import com.api.v2.people.domain.Person
-import com.api.v2.people.dtos.PersonFullNameDto
 import com.api.v2.people.dtos.PersonRegistrationDto
 import com.api.v2.people.exceptions.DuplicatedPersonalInformationException
 import com.api.v2.people.services.PersonRegistrationService
@@ -20,11 +19,9 @@ class PersonRegistrationTest {
     private lateinit var registrationService: PersonRegistrationService
 
     val registrationDto1 = PersonRegistrationDto(
-        PersonFullNameDto(
-            "Leo",
-            "",
-            "Santos"
-        ),
+        "Leo",
+        "",
+        "Santos",
         "123456789",
         LocalDate.parse("2000-12-12"),
         "leosantos@mail.com",
@@ -48,11 +45,9 @@ class PersonRegistrationTest {
     }
 
     val registrationDto2 = PersonRegistrationDto(
-        PersonFullNameDto(
-            "Leo",
-            "",
-            "Santos"
-        ),
+        "Leo",
+        "",
+        "Santos",
         "123456788",
         LocalDate.parse("2000-12-12"),
         "leosantos@mail.com",

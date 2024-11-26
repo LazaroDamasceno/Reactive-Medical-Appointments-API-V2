@@ -2,7 +2,6 @@ package com.api.v2
 
 import com.api.v2.customers.dtos.CustomerAddressDto
 import com.api.v2.customers.dtos.CustomerModificationDto
-import com.api.v2.people.dtos.PersonFullNameDto
 import com.api.v2.people.dtos.PersonModificationDto
 import org.junit.jupiter.api.MethodOrderer
 import org.junit.jupiter.api.Order
@@ -22,11 +21,9 @@ class CustomerModificationTest {
 
     val customerModificationDto = CustomerModificationDto(
         PersonModificationDto(
-            PersonFullNameDto(
-                "Leonardo",
-                "Silva",
-                "Santos Jr"
-            ),
+            "Leonardo",
+            "Silva",
+            "Santos Jr",
             LocalDate.parse("2000-12-12"),
             "jr@leosantos.com",
             "1234567890"

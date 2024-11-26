@@ -18,7 +18,7 @@ internal class PersonRegistrationServiceImpl(
 
     override suspend fun register(registrationDto: @Valid PersonRegistrationDto): Person {
 
-        suspend fun handleDuplicatedSsn(ssn: String) {
+        suspend fun handleDuplicatedSsn() {
             val isSsnDuplicated = personRepository
                 .findAll()
                 .filter { e -> e.ssn == registrationDto.ssn }
@@ -27,7 +27,7 @@ internal class PersonRegistrationServiceImpl(
             if (isSsnDuplicated) throw DuplicatedPersonalInformationException(message)
         }
 
-        suspend fun handleDuplicatedEmail(email: String) {
+        suspend fun handleDuplicatedEmail() {
             val isEmailDuplicated = personRepository
                 .findAll()
                 .filter { e -> e.email == registrationDto.email }
@@ -37,8 +37,8 @@ internal class PersonRegistrationServiceImpl(
         }
 
         return withContext(Dispatchers.IO) {
-            handleDuplicatedSsn(registrationDto.ssn)
-            handleDuplicatedEmail(registrationDto.email)
+            handleDuplicatedSsn()
+            handleDuplicatedEmail()
             val person = Person.create(registrationDto)
             personRepository.save(person)
         }

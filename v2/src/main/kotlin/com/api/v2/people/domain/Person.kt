@@ -1,6 +1,5 @@
 package com.api.v2.people.domain
 
-import com.api.v2.people.dtos.PersonFullNameDto
 import com.api.v2.people.dtos.PersonModificationDto
 import com.api.v2.people.dtos.PersonRegistrationDto
 import org.bson.codecs.pojo.annotations.BsonId
@@ -12,7 +11,9 @@ import java.time.ZoneId
 
 @Document
 class Person(
-    var fullName: PersonFullNameDto,
+    var firstName: String,
+    var middleName: String,
+    var lastName: String,
     var ssn: String,
     var birthDate: LocalDate,
     var email: String,
@@ -29,7 +30,9 @@ class Person(
     companion object {
         fun create(registrationDto: PersonRegistrationDto): Person {
             return Person(
-                registrationDto.fullNameDto,
+                registrationDto.firstName,
+                registrationDto.middleName,
+                registrationDto.lastName,
                 registrationDto.ssn,
                 registrationDto.birthDate,
                 registrationDto.email,
@@ -39,12 +42,19 @@ class Person(
     }
 
     fun modify(modificationDto: PersonModificationDto) {
-        fullName = modificationDto.fullNameDto
+        firstName = modificationDto.firstName
+        middleName = modificationDto.middle
+        lastName = modificationDto.lastName
         birthDate = modificationDto.birthDate
         email = modificationDto.email
         phoneNumber = modificationDto.phoneNumber
         modifiedAt = LocalDateTime.now()
         modifiedAtZone = ZoneId.systemDefault()
+    }
+
+    fun fullName(): String {
+        if (middleName.isEmpty()) "$firstName $lastName"
+        return "$firstName $middleName $lastName"
     }
 
 }

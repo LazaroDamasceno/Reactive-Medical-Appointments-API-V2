@@ -2,7 +2,6 @@ package com.api.v2.doctors.services
 
 import com.api.v2.doctors.domain.DoctorRepository
 import com.api.v2.doctors.dtos.DoctorResponseDto
-import com.api.v2.doctors.dtos.MedicalLicenseNumberDto
 import com.api.v2.doctors.utils.DoctorFinderUtil
 import com.api.v2.doctors.utils.DoctorResponseMapper
 import jakarta.validation.Valid
@@ -18,9 +17,7 @@ internal class DoctorRetrievalServiceImpl(
     private val doctorRepository: DoctorRepository
 ): DoctorRetrievalService {
 
-    override suspend fun findByMedicalLicenseNumber(
-        licenseNumberDto: @Valid MedicalLicenseNumberDto
-    ): DoctorResponseDto {
+    override suspend fun findByMedicalLicenseNumber(licenseNumberDto: String): DoctorResponseDto {
         return withContext(Dispatchers.IO) {
             val foundDoctor = doctorFinderUtil.findByMedicalLicenseNumber(licenseNumberDto)
             DoctorResponseMapper.map(foundDoctor)

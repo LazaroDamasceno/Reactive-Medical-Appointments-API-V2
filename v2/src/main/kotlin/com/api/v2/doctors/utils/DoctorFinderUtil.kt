@@ -2,9 +2,7 @@ package com.api.v2.doctors.utils
 
 import com.api.v2.doctors.domain.Doctor
 import com.api.v2.doctors.domain.DoctorRepository
-import com.api.v2.doctors.dtos.MedicalLicenseNumberDto
 import com.api.v2.doctors.exceptions.DoctorNotFoundException
-import jakarta.validation.Valid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.singleOrNull
@@ -16,11 +14,11 @@ class DoctorFinderUtil(
     private val doctorRepository: DoctorRepository
 ) {
 
-    suspend fun findByMedicalLicenseNumber(licenseNumberDto: @Valid MedicalLicenseNumberDto): Doctor {
+    suspend fun findByMedicalLicenseNumber(licenseNumberDto: String): Doctor {
         return withContext(Dispatchers.IO) {
             val foundDoctor = doctorRepository
                 .findAll()
-                .filter { d -> d.medicalLicenseNumberDto == licenseNumberDto }
+                .filter { d -> d.medicalLicenseNumber == licenseNumberDto }
                 .singleOrNull()
             if (foundDoctor == null) throw DoctorNotFoundException()
             foundDoctor

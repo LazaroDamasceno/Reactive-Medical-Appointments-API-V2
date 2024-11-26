@@ -1,8 +1,6 @@
 package com.api.v2
 
 import com.api.v2.doctors.dtos.DoctorRegistrationDto
-import com.api.v2.doctors.dtos.MedicalLicenseNumberDto
-import com.api.v2.people.dtos.PersonFullNameDto
 import com.api.v2.people.dtos.PersonRegistrationDto
 import org.junit.jupiter.api.MethodOrderer
 import org.junit.jupiter.api.Order
@@ -26,11 +24,9 @@ class DoctorRegistrationTest {
             "CA"
         ),
         PersonRegistrationDto(
-            PersonFullNameDto(
-                "Ivan",
-                "",
-                "Silveira"
-            ),
+            "Ivan",
+            "",
+            "Silveira",
             "987654321",
             LocalDate.parse("2000-12-12"),
             "ivansilveira@mail.com",
@@ -66,11 +62,9 @@ class DoctorRegistrationTest {
             "CA"
         ),
         PersonRegistrationDto(
-            PersonFullNameDto(
-                "Ivan",
-                "",
-                "Silveira"
-            ),
+            "Ivan",
+            "",
+            "Silveira",
             "987654321",
             LocalDate.parse("2000-12-12"),
             "ivansilveira@mail.com",
@@ -95,11 +89,9 @@ class DoctorRegistrationTest {
             "CA"
         ),
         PersonRegistrationDto(
-            PersonFullNameDto(
-                "Ivan",
-                "",
-                "Silveira"
-            ),
+            "Ivan",
+            "",
+            "Silveira",
             "987654320",
             LocalDate.parse("2000-12-12"),
             "ivansilveira@mail.com",

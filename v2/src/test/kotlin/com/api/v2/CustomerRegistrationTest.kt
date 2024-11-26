@@ -2,7 +2,6 @@ package com.api.v2
 
 import com.api.v2.customers.dtos.CustomerAddressDto
 import com.api.v2.customers.dtos.CustomerRegistrationDto
-import com.api.v2.people.dtos.PersonFullNameDto
 import com.api.v2.people.dtos.PersonRegistrationDto
 import org.junit.jupiter.api.*
 import org.springframework.beans.factory.annotation.Autowired
@@ -19,11 +18,9 @@ class CustomerRegistrationTest {
 
     val customerRegistrationDto1 = CustomerRegistrationDto(
         PersonRegistrationDto(
-            PersonFullNameDto(
-                "Leo",
-                "",
-                "Santos"
-            ),
+            "Leo",
+            "",
+            "Santos",
             "123456789",
             LocalDate.parse("2000-12-12"),
             "leosantos@mail.com",
@@ -61,11 +58,9 @@ class CustomerRegistrationTest {
 
     val customerRegistrationDto2 = CustomerRegistrationDto(
         PersonRegistrationDto(
-            PersonFullNameDto(
-                "Leo",
-                "",
-                "Santos"
-            ),
+            "Leo",
+            "",
+            "Santos",
             "123456788",
             LocalDate.parse("2000-12-12"),
             "leosantos@mail.com",

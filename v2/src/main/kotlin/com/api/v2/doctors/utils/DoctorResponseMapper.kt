@@ -8,7 +8,7 @@ class DoctorResponseMapper {
     companion object {
         fun map(doctor: Doctor): DoctorResponseDto {
             return DoctorResponseDto(
-                doctor.medicalLicenseNumberDto,
+                doctor.medicalLicenseNumber,
                 PersonResponseMapper.map(doctor.person)
             )
         }

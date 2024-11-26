@@ -2,7 +2,6 @@ package com.api.v2
 
 import com.api.v2.people.domain.Person
 import com.api.v2.people.domain.PersonRepository
-import com.api.v2.people.dtos.PersonFullNameDto
 import com.api.v2.people.dtos.PersonModificationDto
 import com.api.v2.people.services.PersonModificationService
 import com.api.v2.people.utils.PersonFinderUtil
