@@ -22,18 +22,18 @@ internal class PersonRegistrationServiceImpl(
             val isSsnDuplicated = personRepository
                 .findAll()
                 .filter { e -> e.ssn == registrationDto.ssn }
-                .singleOrNull()
+                .singleOrNull() != null
             val message = "The given SSN is already in use."
-            if (isSsnDuplicated != null) throw DuplicatedPersonalInformationException(message)
+            if (isSsnDuplicated) throw DuplicatedPersonalInformationException(message)
         }
 
         suspend fun handleDuplicatedEmail(email: String) {
             val isEmailDuplicated = personRepository
                 .findAll()
                 .filter { e -> e.email == registrationDto.email }
-                .singleOrNull()
+                .singleOrNull() != null
             val message = "The given email is already in use."
-            if (isEmailDuplicated != null) throw DuplicatedPersonalInformationException(message)
+            if (isEmailDuplicated) throw DuplicatedPersonalInformationException(message)
         }
 
         return withContext(Dispatchers.IO) {
