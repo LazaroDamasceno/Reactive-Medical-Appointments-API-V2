@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
 import org.springframework.stereotype.Service
 
 @Service
-class DoctorRegistrationServiceImpl(
+internal class DoctorRegistrationServiceImpl(
     private val doctorRepository: DoctorRepository,
     private val personRegistrationService: PersonRegistrationService
 ): DoctorRegistrationService {
