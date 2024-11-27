@@ -25,11 +25,9 @@ class PersonModificationTest {
     private lateinit var personModificationService: PersonModificationService
 
     val modificationDto = PersonModificationDto(
-        PersonFullNameDto(
-            "Leonardo",
-            "Silva",
-            "Santos Jr"
-        ),
+        "Leonardo",
+        "Silva",
+        "Santos Jr",
         LocalDate.parse("2000-12-12"),
         "jr@leosantos.com",
         "0987654321"
