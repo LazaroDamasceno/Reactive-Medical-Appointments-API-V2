@@ -29,7 +29,7 @@ class DoctorModificationTest {
     @Test
     @Order(1)
     fun `test successful modification`() {
-        val medicalLicenseNumber = "987654321"
+        val medicalLicenseNumber = "12345678CA"
         webTestClient
             .patch()
             .uri("api/v2/doctors/$medicalLicenseNumber")
@@ -41,7 +41,7 @@ class DoctorModificationTest {
     @Test
     @Order(2)
     fun `test unsuccessful for non-registered medical license number`() {
-        val medicalLicenseNumber = "987654320"
+        val medicalLicenseNumber = "12345677CA"
         webTestClient
             .patch()
             .uri("api/v2/doctors/$medicalLicenseNumber")
