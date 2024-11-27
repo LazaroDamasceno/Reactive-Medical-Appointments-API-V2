@@ -1,8 +1,6 @@
 package com.api.v2
 
-import com.api.v2.doctors.dtos.DoctorRegistrationDto
 import com.api.v2.people.dtos.PersonModificationDto
-import com.api.v2.people.dtos.PersonRegistrationDto
 import org.junit.jupiter.api.MethodOrderer
 import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
@@ -21,17 +19,16 @@ class DoctorModificationTest {
 
     val modificationDto = PersonModificationDto(
             "Ivan",
-            "",
-            "Silveira",
+            "Silva",
+            "Silveira Jr.",
             LocalDate.parse("2000-12-12"),
-            "ivansilveira@mail.com",
-            "1234567890",
-        )
+            "jr@ivansilveira.com",
+            "1234567890"
     )
 
     @Test
     @Order(1)
-    fun `test successful registration`() {
+    fun `test successful modification`() {
         val medicalLicenseNumber = "987654321"
         webTestClient
             .patch()
@@ -43,7 +40,7 @@ class DoctorModificationTest {
 
     @Test
     @Order(2)
-    fun `test unsuccessful for duplicated medical license number`() {
+    fun `test unsuccessful for non-registered medical license number`() {
         val medicalLicenseNumber = "987654320"
         webTestClient
             .patch()
