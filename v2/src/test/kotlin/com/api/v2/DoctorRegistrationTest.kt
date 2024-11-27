@@ -19,10 +19,7 @@ class DoctorRegistrationTest {
     private lateinit var webTestClient: WebTestClient
 
     val registrationDto1 = DoctorRegistrationDto(
-        MedicalLicenseNumberDto(
-            "12345678",
-            "CA"
-        ),
+        "12345678CA",
         PersonRegistrationDto(
             "Ivan",
             "",
@@ -57,10 +54,7 @@ class DoctorRegistrationTest {
     }
 
     val registrationDto2 = DoctorRegistrationDto(
-        MedicalLicenseNumberDto(
-            "12345677",
-            "CA"
-        ),
+        "12345677CA",
         PersonRegistrationDto(
             "Ivan",
             "",
@@ -84,10 +78,7 @@ class DoctorRegistrationTest {
     }
 
     val registrationDto3 = DoctorRegistrationDto(
-        MedicalLicenseNumberDto(
-            "12345676",
-            "CA"
-        ),
+        "12345676CA",
         PersonRegistrationDto(
             "Ivan",
             "",
