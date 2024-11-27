@@ -2,7 +2,7 @@ package com.api.v2.doctors.utils
 
 import com.api.v2.doctors.domain.Doctor
 import com.api.v2.doctors.domain.DoctorRepository
-import com.api.v2.doctors.exceptions.DoctorNotFoundException
+import com.api.v2.doctors.exceptions.NonExistentDoctorException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.singleOrNull
@@ -20,7 +20,7 @@ class DoctorFinderUtil(
                 .findAll()
                 .filter { d -> d.medicalLicenseNumber == licenseNumberDto }
                 .singleOrNull()
-            if (foundDoctor == null) throw DoctorNotFoundException()
+            if (foundDoctor == null) throw NonExistentDoctorException()
             foundDoctor
         }
     }

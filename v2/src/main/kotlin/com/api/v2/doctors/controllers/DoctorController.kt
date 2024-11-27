@@ -37,13 +37,13 @@ class DoctorController(
         return retrievalService.findAll()
     }
 
-    @PatchMapping("{medicalLicenseNumber}")
+    @PatchMapping("{LicenseNumber}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     suspend fun modify(
-        @PathVariable medicalLicenseNumber: String,
+        @PathVariable licenseNumber: String,
         @RequestBody modificationDto: @Valid PersonModificationDto
     ) {
-        return modificationService.modify(medicalLicenseNumber, modificationDto)
+        return modificationService.modify(licenseNumber, modificationDto)
     }
 
 }
