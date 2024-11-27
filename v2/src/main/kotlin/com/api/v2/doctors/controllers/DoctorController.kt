@@ -39,7 +39,7 @@ class DoctorController(
         return retrievalService.findAll()
     }
 
-    @PatchMapping("{licenseNumber}")
+    @PutMapping("{licenseNumber}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     suspend fun modify(
         @PathVariable licenseNumber: String,
