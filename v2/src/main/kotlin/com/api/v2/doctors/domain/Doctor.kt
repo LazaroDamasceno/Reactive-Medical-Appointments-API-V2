@@ -17,11 +17,19 @@ class Doctor(
     var id: ObjectId = ObjectId()
     val createdAt: LocalDateTime = LocalDateTime.now()
     val createdAtZone: ZoneId = ZoneId.systemDefault()
+    var terminatedAt: LocalDateTime? = null
+    var terminatedAtZone: ZoneId? = null
+
 
     companion object {
         fun create( medicalLicenseNumber: String, person: Person): Doctor {
             return Doctor(medicalLicenseNumber, person)
         }
+    }
+
+    fun terminate() {
+        terminatedAt = LocalDateTime.now()
+        terminatedAtZone = ZoneId.systemDefault()
     }
 
 }
